@@ -1,0 +1,402 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: white;
+    width: 100vw;
+    height: auto;
+    background-color: #222433;
+    position: absolute;
+}
+
+#add{
+    font-weight: 200;
+    font-size: 40px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+    height: 50px;
+    width: 50px;
+}
+html {
+    background-color: #222433;
+}
+#container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    padding: 25px;
+    padding-top: 65px;
+}
+
+#container .page-title {
+    align-items: center;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+
+#container .page-title div {
+
+    width: 40px;
+    height: 40px;
+    background-color: #505371;
+    border-radius: 5px;
+}
+#notes {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+}
+
+#search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#search i {
+    font-size: 20px;
+}
+
+.note {
+    height: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: black;
+    border-radius: 10px;
+    width: calc(50% - 10px);
+    background-color: rgb(255, 255, 255);
+}
+
+.note-name {
+    font-weight: bold;
+}
+
+.note-date {
+    text-align: right;
+    font-size: 10px;
+    color: #827a54;
+}
+
+.note-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    color: #827a54;
+}
+#note-text:focus, 
+#note-title:focus {
+    border: none;
+    outline: none;
+}
+
+
+
+.a {
+    background-color: #A6EAFF;
+}
+.b {
+    background-color: #F3E09E;
+}
+
+.c {
+    background-color: #CDFFA6;
+}
+
+.d {
+    background-color: #F29DE0;
+}
+
+.e {
+    background-color: #F3E09E;
+}
+
+
+
+#search i  {
+    transition: transform 0.5s ease;
+}
+
+.rotated {
+    transform: rotate(360deg);
+}
+
+
+
+
+
+
+
+
+
+#add {
+
+}
+#editNote  {
+    font-weight: 200;
+    font-size: 40px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 100v;
+    width: 100vw;
+}
+
+
+#add .nav,
+#editNote .nav {
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#add .nav img,
+#editNote .nav img {
+    width: 25px;
+}
+
+.create-note {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: 22px;
+}
+.date {
+    color: #A7ACAE;
+    font-size: 15px;
+    font-weight: 500;
+
+}
+.content {
+    font-size: 16px;
+    font-weight: 400;
+}
+input:active, textarea {
+    
+}
+input {
+    background-color: transparent;
+}
+
+textarea {
+    height: 100vh;
+    background-color: transparent;
+    resize: none; /* Prevent users from resizing the textarea */
+    overflow-y: hidden; 
+}
+
+.none {
+    display: none!important;
+}
+.scale-in-br {
+	-webkit-animation: scale-in-br 0.1s both;
+	        animation: scale-in-br 0.1s both;
+}
+.scale-out-br {
+	-webkit-animation: scale-out-br 0.1s both;
+	        animation: scale-out-br 0.1s both;
+}
+@keyframes scale-in-br {
+    0% {
+    }
+    25% {
+        border-radius: 0;
+    }
+    100% {
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+} 
+@keyframes scale-out-br {
+    0% {
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+    50% {
+        border-radius: 0;
+    }
+    100% {
+        border-radius: 50%;
+        bottom: 50px;
+        right: 40px;
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.hidden {
+    display: none!important;
+}
+
+audio {
+   max-width: 100%;
+    width: 100%;
+}
+
+.record {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    translate: -50% -50%;
+}
+#startRecording {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+}
+#startRecording i {
+    color: #373737;
+    font-size: 30px;
+
+}
+#stopRecording {
+    display: none;
+
+
+
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+}
+#stopRecording i{
+    color: #ff8b8b;
+    font-size: 30px;
+}
+
+#stopRecording.active,
+#startRecording.active
+{
+    display: flex!important;
+}
+
+.audio-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+
+    border-radius: 10px;
+
+    background-color: white;
+
+    flex-direction: row;
+ 
+}
+
+
+
+
+
+
+
+
+
+.playButton,
+.pauseButton 
+{
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    width: auto;
+    height: auto;
+
+}
+
+
+.delete {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        translate: -50% -50%;
+}
+
+#deleteNote {
+    display: flex;
+
+
+
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+}
+#deleteNote i{
+    color: #ff8b8b;
+    font-size: 20px;
+}
+
+#deleteAudio {
+    display: flex;
+
+
+
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+}
+#deleteAudio i{
+    color: #ff8b8b;
+    font-size: 20px;
+}
+.audioContainer {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

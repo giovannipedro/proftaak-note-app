@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Audio Player</title>
+    <style>
+        audio {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+
+
+
+        .progress {
+            height: 100%;
+            border-radius: 5px;
+            background-color: #4caf50;
+            width: 0;
+        }
+
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        .playButton,
+        .pauseButton 
+        {
+            font-size: 20px;
+            text-align: center;
+            padding: 20px;
+            width: auto;
+            height: auto;
+
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/2557fb4e99.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="customAudioPlayer">
+        <audio class="audioPlayer he" >
+            <source src="https://notes.alexvanrooij.nl/audio/1698868595.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="controls">
+            <i class="fa-solid fa-play playButton"></i>
+            <i class="fa-solid fa-pause pauseButton"></i>
+            <input type="range" class="seekBar" value="0" max="100" step="0.1">
+        </div>
+    </div>
+
+    <div class="customAudioPlayer">
+        <audio class="audioPlayer he" >
+            <source src="https://notes.alexvanrooij.nl/audio/1698868595.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="controls">
+            <i class="fa-solid fa-play playButton"></i>
+            <i class="fa-solid fa-pause pauseButton"></i>
+            <input type="range" class="seekBar" value="0" max="100" step="0.1">
+        </div>
+    </div>
+
+    <div class="customAudioPlayer test">
+        <audio class="audioPlayer" >
+            <source src="https://notes.alexvanrooij.nl/audio/1698868595.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="controls">
+            <i class="fa-solid fa-play playButton"></i>
+            <i class="fa-solid fa-pause pauseButton"></i>
+            <input type="range" class="seekBar" value="0" max="100" step="0.1">
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.pauseButton').toggle();
+
+            $(".customAudioPlayer").each(function(index, element) {
+            $(element).on("click", function(e) {
+                const audio = $(element).find('.audioPlayer')[0];
+                console.log(audio);
+
+                const seekBar = $(element).find('.controls .seekBar');
+                
+                $(audio).on("timeupdate", function() { 
+                   var progressPercentage = (audio.currentTime / audio.duration) * 100;
+                    seekBar.val((audio.currentTime / audio.duration) * 100);
+
+                    console.log(progressPercentage);
+                    if(progressPercentage == 100) {
+                        $(element).find('.controls .pauseButton').toggle();
+                        $(element).find('.controls .playButton').toggle();
+                        // $(element).find('.controls .playButton').toggle();
+                        console.log($(element).find('.controls .playButton'));
+                        progressPercentage = 0;
+                        seekBar.val(0);
+                        $(audio).unbind('timeupdate');
+                    }
+
+
+                });
+
+
+                $(seekBar).on("input", function() { 
+                    var seekTime = (seekBar.val() * audio.duration) / 100;
+                    audio.currentTime = seekTime;
+                });
+
+
+                if ($(e.target).hasClass('playButton')) {
+                    $(e.target).toggle();
+    
+                    $(element).find('.pauseButton').toggle();
+                    console.log("Play button clicked");
+                    audio.play();
+
+                }
+                if ($(e.target).hasClass('pauseButton')) {
+                    $(e.target).toggle();
+    
+                    $(element).find('.playButton').toggle();
+                    
+                    console.log($(element));
+                    console.log("Pause button clicked");
+                    audio.pause();
+
+                }
+
+                console.log($(this));
+            });
+        });
+
+
+          
+
+
+            // var audio = $(".audioPlayer")[0];
+            
+            // var playButton = $(".playButton");
+            var pauseButton = $(".pauseButton");
+            var seekBar = $(".seekBar");
+
+            // playButton.on("click", function() {
+            //     audio.play();
+            // });
+
+            // pauseButton.on("click", function() {
+            //     audio.pause();
+            // });
+
+
+
+
+            // seekBar.on("input", function() {
+            //     var seekTime = (seekBar.val() * audio.duration) / 100;
+            //     audio.currentTime = seekTime;
+            // });
+
+            // audio.addEventListener("timeupdate", function() {
+            //     var progressPercentage = (audio.currentTime / audio.duration) * 100;
+            //     seekBar.val((audio.currentTime / audio.duration) * 100);
+
+            // });
+
+        });
+    </script>
+</body>
+</html>

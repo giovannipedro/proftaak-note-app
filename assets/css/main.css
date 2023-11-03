@@ -1,0 +1,267 @@
+* {
+    text-decoration: none;
+    font-family: monospace!important;
+}
+body {
+    width: 100vw;
+    height: auto;
+}
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-color: rgba(249, 249, 252, 0.884);
+}
+#container div form,
+#admin-login .top,
+#admin-login .bottom {
+    display: flex;
+    flex-direction: column;
+}
+#admin-login {
+    max-width: 300px;
+    width: 100%;
+    gap: 30px;
+}
+
+
+#admin-login .top,
+#admin-login .bottom {
+    gap: 20px;
+}
+
+#container .sub {
+    position: relative;
+    padding: 40px 0 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 400px;
+    background-color: white;
+    width: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#container .sub img {
+    width: 70px;
+    position: absolute;
+    left: 20px;
+    top: -80px;
+}
+#admin-login input[type=text],
+#admin-login input[type=password],
+#admin-login input[type=date]  
+{
+    color: #757575;
+    padding-left: 15px;
+    background-color: #FBFBFD;
+    height: 40px;
+    border: 1px solid #f0ecec;
+    border-radius: 3px;
+}
+
+#admin-login input[type=checkbox] 
+{
+    margin-left: 15px;
+}
+
+
+#admin-login .bottom button {
+    background-color: #2b7de7;
+    height: 40px;
+    border: 1px solid #f0ecec;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#admin-login .bottom div { 
+    user-select: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#admin-login .bottom div a:nth-child(1) { 
+    color:rgb(124, 127, 131);
+}
+#admin-login .bottom div a:nth-child(2) { 
+    font-weight: bold;
+}
+
+a:-webkit-any-link {
+    color:rgb(124, 127, 131);
+    cursor: pointer;
+}
+
+
+
+#admin-login button:hover 
+{
+    cursor: pointer;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+#admin-login button:active 
+{
+    transform: translateY(2px);
+}
+#admin-login .bottom div a:nth-child(2):hover {
+    cursor: pointer;
+
+}
+#admin-login .top .names {
+    gap: 10px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#admin-login .top .names input{
+    width: calc(50% - 5px);
+}
+#container .sub img.txt-bub {
+    width: 120px;
+    position: absolute;
+    left: 60px;
+    top: -100px;
+}
+
+#container .sub p.txt-txt {
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+    z-index: 10;
+    width: 120px;
+    position: absolute;
+    left: 70px;
+    top: -92px;
+}
+
+#container .sub .txt-bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+}
+.none {
+    display: none;
+}
+
+
+
+#admin-login div .genders {
+    border: 1px solid #f0ecec;
+
+
+    margin-left: 0!important;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    width: 100%;
+    height: 40px;
+    background-color: #FBFBFD;
+}
+#admin-login div .genders label[for=male], 
+#admin-login div .genders label[for=female] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#admin-login div .genders label[for=male] {
+    border-radius: 3px 0px 0px 3px;
+
+
+    grid-area: 1 / 1 / 2 / 2; 
+}
+#admin-login div .genders label[for=female] {
+    border-radius: 0px 3px 3px 0px;
+
+
+    grid-area: 1 / 2 / 2 / 3; 
+}
+
+#admin-login div .genders label[for=female] input,
+#admin-login div .genders label[for=male] input {
+    opacity: 0;
+    margin: 0!important;
+}
+
+
+#admin-login div .genders label.active[for=male] {
+    background-color: rgb(43, 125, 231);
+}
+#admin-login div .genders label.active[for=female] {
+    background-color: rgb(228, 104, 104);
+}
+
+#admin-login div .genders label img path {
+    fill: rgb(124, 127, 131)!important;
+    color: rgb(124, 127, 131)!important;
+}
+
+#admin-login div .genders label svg{
+    fill: rgb(174, 177, 180);
+    position:unset!important;
+    width: 18px;
+    height: 18px;
+}
+
+
+.active .svg-fill {
+    fill: white!important;
+}
+
+
+#admin-login #form-wrong-message {
+    font-size: 13px;
+    font-weight: regular;
+    color: #ff0000;
+    align-self: center;
+}
+
+#admin-login .form-wrong {
+    position: relative;
+    animation: shake 100ms;
+    border: 1px solid rgba(255, 0, 0, 0.185)!important;
+    background-color: #ff00002d!important;
+}
+
+
+.fade-in-bl {-webkit-animation: fade-in-bl 0.15s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;animation: fade-in-bl 0.15s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;}
+@-webkit-keyframes fade-in-bl {0% {-webkit-transform: translateX(-50px) translateY(50px);transform: translateX(-50px) translateY(50px);opacity: 0;}
+25% {opacity: 0;}
+100% {-webkit-transform: translateX(0) translateY(0);transform: translateX(0) translateY(0);opacity: 1;}}
+@keyframes fade-in-bl {0% {-webkit-transform: translateX(-50px) translateY(50px);transform: translateX(-50px) translateY(50px);opacity: 0;}
+25% {opacity: 0;}
+100% {-webkit-transform: translateX(0) translateY(0);transform: translateX(0) translateY(0);opacity: 1;}}
+.slide-in-left {-webkit-animation: slide-in-left .5s both;animation: slide-in-left .5s both;}
+@-webkit-keyframes slide-in-left {0% {-webkit-transform: translateX(-100%);transform: translateX(-100%);background-color: rgb(43, 125, 231)}
+100% {-webkit-transform: translateX(0);transform: translateX(0);opacity: 1;background-color: rgb(228, 104, 104);}}
+@keyframes slide-in-left {0% {-webkit-transform: translateX(-100%);transform: translateX(-100%);background-color: rgb(43, 125, 231);}
+100% {-webkit-transform: translateX(0);transform: translateX(0);opacity: 1;background-color: rgb(228, 104, 104);}}
+.slide-in-right {-webkit-animation: slide-in-right .5s both;animation: slide-in-right .5s both;}
+@-webkit-keyframes slide-in-right {0% {-webkit-transform: translateX(100%);transform: translateX(100%);background-color: rgb(228, 104, 104);}
+100% {-webkit-transform: translateX(0);transform: translateX(0);background-color: rgb(43, 125, 231);}}
+@keyframes slide-in-right {0% {-webkit-transform: translateX(100%);transform: translateX(100%);background-color: rgb(228, 104, 104);}
+100% {-webkit-transform: translateX(0);transform: translateX(0);background-color: rgb(43, 125, 231);}}
+  
+
+
+
+@keyframes shake {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(3px) }
+    50% { transform: translateX(-3px) }
+    75% { transform: translateX(3px) }
+    100% { transform: translateX(0) }
+   }

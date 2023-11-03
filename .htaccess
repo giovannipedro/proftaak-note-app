@@ -1,0 +1,63 @@
+Options +FollowSymlinks
+RewriteEngine On
+ErrorDocument 404 /404
+<ifModule mod_gzip.c>
+    mod_gzip_on Yes
+    mod_gzip_dechunk Yes
+    mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
+    mod_gzip_item_include handler ^cgi-script$
+    mod_gzip_item_include mime ^text/.*
+    mod_gzip_item_include mime ^application/x-javascript.*
+    mod_gzip_item_exclude mime ^image/.*
+    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</ifModule>
+<ifModule mod_expires.c>
+    Header set Access-Control-Allow-Origin "*"
+
+    #Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline';"
+
+    # 1 YEAR
+    <FilesMatch ".(ico|pdf|flv)$">
+        Header set Cache-Control "max-age=29030400, public"
+    </FilesMatch>
+    # 1 WEEK
+    <FilesMatch ".(jpg|jpeg|png|gif|swf|svg|woff)$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+    # 1 WEEK
+    <FilesMatch "analytics\\.js$">
+        Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+    # 2 DAYS
+    <FilesMatch ".(xml|txt|css|js)$">
+        Header set Cache-Control "max-age=604800, proxy-revalidate"
+    </FilesMatch>
+    # 1 MIN
+    <FilesMatch ".(html|htm|php)$">
+        Header set Cache-Control "max-age=60, private, proxy-revalidate"
+    </FilesMatch>
+</ifModule>
+
+
+
+
+
+RewriteRule ^$ authentication.php?do=2 [NC,L,QSA]
+
+
+
+RewriteRule ^dashboard/shared$ dashb/dashboard.php?page=1 [NC,L,QSA]
+RewriteRule ^dashboard/fav$ dashb/dashboard.php?page=2 [NC,L,QSA]
+RewriteRule ^dashboard/(.*)$ dashb/dashboard.php/ [NC,L,QSA]
+
+#LOGIN/REGISTER
+RewriteRule ^login$ authentication.php?do=2 [NC,L,QSA]
+RewriteRule ^register$ authentication.php?do=1 [NC,L,QSA]
+RewriteRule ^inloggen$ authentication.php?do=2 [NC,L,QSA]
+RewriteRule ^aanmaken$ authentication.php?do=1 [NC,L,QSA]
+RewriteRule ^logout$ php/auth/logout.php?do=1 [NC,L,QSA]
+RewriteRule ^dashboard$ dashb/dashboard.php [NC,L,QSA]
+
+
+#VERIFY SHARED ITEMS
+RewriteRule ^shared/(.*)$ php/verifyDashboard.php?action=17&emailhash=$1 [NC,L,QSA]
